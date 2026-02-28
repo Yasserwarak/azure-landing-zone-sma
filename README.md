@@ -1,15 +1,13 @@
-# azure-landing-zone-sma
-Azure landing zone architecture and operational standards for a fictional 20-person EU-based social media agency, including hybrid setup with on-prem EspoCRM and Azure for backups, web apps, and disaster recovery.
 # Azure Landing Zone – Social Media Agency (Learning/Trial)
 
 Azure landing zone architecture and operational standards for a **20-person EU-based social media agency learning environment**.
 
-## Business Context
-- **20 employees**, Germany-based (Düsseldorf, NRW)
+## 🏢 Business Context
+- **20 employees**, Germany-based (Neuss, NRW)
 - **Hybrid setup**: On-prem Ugreen DXP4800 NAS (EspoCRM) + Azure for backups, web apps, DR
 - **Trial/learning environment** following Microsoft Cloud Adoption Framework (CAF)
 
-## On-Prem Infrastructure (Ugreen NASync DXP4800 Plus)
+## 🏠 On-Prem Infrastructure (Ugreen NASync DXP4800 Plus)
 
 | Component | Specs |
 |-----------|-------|
@@ -22,7 +20,21 @@ Azure landing zone architecture and operational standards for a **20-person EU-b
 | **OS** | UGOS Pro (Linux-based, Docker support) |
 | **Workloads** | EspoCRM (Docker + MySQL on SSD) |
 
-## Architecture Summary
+## 🏗️ Architecture Summary
+
+On-Prem (Ugreen DXP4800 NAS)
+├── EspoCRM (Docker + MySQL on SSD)
+└── Daily backup → Azure Blob Storage
+
+Azure Landing Zone (Single Subscription - "Start Small")
+├── Static Web Apps (Content Tracker app)
+├── Blob Storage (EspoCRM backups)
+├── Log Analytics (monitoring)
+└── Entra ID SSO (employee access)
+
+text
+
+## 📋 Documentation Index
 
 ### 01 Overview
 - [Architecture Overview](docs/01-overview/overview.md)
@@ -48,6 +60,7 @@ Azure landing zone architecture and operational standards for a **20-person EU-b
 - [EspoCRM Integration](docs/05-apps/crm-integration.md)
 
 ## 🚀 Quick Status
+
 | Component | Status | Owner |
 |-----------|--------|-------|
 | Landing Zone Design | ✅ Documented | Cloud Admin |
@@ -57,6 +70,6 @@ Azure landing zone architecture and operational standards for a **20-person EU-b
 | Content Tracker App | ⏳ Deploy pending | Cloud Admin |
 
 ## 🔗 Key Resources
-- [Microsoft Cloud Adoption Framework](https://learn.microsoft.com/azure/cloud-adoption-framework/)
-- [Azure Landing Zone Design Areas](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-areas)
-
+- [Microsoft Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/)
+- [Azure Landing Zone Design Areas](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-areas)
+NOW copy ALL of this → paste into README.md → Commit → Tell me "README fixed" → I'll give you the next 3 files!
