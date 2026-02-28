@@ -4,6 +4,20 @@ The landing zone will be implemented in the following structured order.
 
 ---
 
+# Phase 0 – Current State Assessment & Strategy Definition
+
+Before any Azure resource is deployed, a structured assessment phase is conducted.
+
+Purpose:
+- Understand the existing on-prem infrastructure
+- Evaluate identity and access control maturity
+- Analyze application architecture (EspoCRM + MySQL)
+- Assess backup reliability and disaster recovery posture
+- Identify network constraints and cost limitations
+- Compare cloud migration alternatives
+
+---
+
 ## Phase 1 – Identity & Access
 - Create Microsoft Entra ID security groups
 - Define RBAC model
