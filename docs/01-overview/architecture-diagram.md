@@ -24,53 +24,6 @@ The goal of this project is to:
 > Note: Azure Blob Storage does not sync a database automatically.
 > The NAS generates full volume backups/snapshots and uploads them to Azure Blob Storage.
 
----
-
-## High-Level Architecture Diagram
-
-```mermaid
-flowchart LR
-
-%% ===== On-Prem =====
-subgraph ONP[On-Prem (Office Düsseldorf, Germany)]
-  NAS[Ugreen NASync DXP4800 Plus]
-  CRM[EspoCRM (Docker Container)]
-  DB[(MySQL Database on SSD)]
-  NAS --> CRM
-  CRM --> DB
-end
-
-%% ===== Identity =====
-subgraph ID[Identity]
-  Entra[Microsoft Entra ID (Cloud-only identities)]
-end
-
-%% ===== Azure =====
-subgraph AZ[Azure (EU Region) - Single Subscription]
-
-  subgraph NET[Networking]
-    VNET[Virtual Network (VNet)]
-    SUBNET[Subnet (Shared Services)]
-    NSG[Network Security Group]
-    VNET --- SUBNET
-    SUBNET --- NSG
-  end
-
-  STORAGE[Azure Storage Account (Blob Storage)]
-  LA[Log Analytics Workspace]
-  VM[Azure VM (Temporary DR Restore)]
-  WEB[Content Tracker Web App (SSO)]
-end
-
-%% ===== Flows =====
-NAS -->|Full Volume Backup (HTTPS)| STORAGE
-STORAGE -->|Diagnostics Logs| LA
-WEB -->|SSO Authentication| Entra
-VM -->|Restore Backups| STORAGE
-```
-
----
-
 ## Component Overview
 
 ### On-Prem Infrastructure
